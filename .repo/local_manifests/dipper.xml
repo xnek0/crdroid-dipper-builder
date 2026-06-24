@@ -8,5 +8,4 @@
   <project path="device/xiaomi/dipper-common" name="crdroidandroid/android_device_xiaomi_dipper-common" remote="github" revision="12.0" />
   <project path="vendor/xiaomi/dipper" name="crdroidandroid/proprietary_vendor_xiaomi_dipper" remote="github" revision="12.0" />
   <project path="vendor/xiaomi/dipper-common" name="crdroidandroid/proprietary_vendor_xiaomi_dipper-common" remote="github" revision="12.0" />
-  <project path="vendor/xiaomi/dipper" name="crdroidandroid/proprietary_vendor_xiaomi-dipper" remote="github" revision="12.0" />
 </manifest>
