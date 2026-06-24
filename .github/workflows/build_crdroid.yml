@@ -1,0 +1,40 @@
+name: Build crDroid 12 for dipper
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Maximize disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          sudo apt-get clean
+          df -h
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses6 libncurses-dev libsdl1.2-dev libssl-dev libwxgtk3.2-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Setup repo and sync
+        run: |
+          mkdir ~/crDroid
+          cd ~/crDroid
+          repo init -u https://github.com/crdroidandroid/android.git -b 12.0 --git-lfs --no-clone-bundle
+          # Копируем локальный манифест
+          cp ${GITHUB_WORKSPACE}/.repo/local_manifests/dipper.xml .repo/local_manifests/
+          repo sync --force-sync --no-tags --no-clone-bundle -j8
+      - name: Build
+        run: |
+          cd ~/crDroid
+          . build/envsetup.sh
+          brunch dipper
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: crDroid-12-dipper
+          path: ~/crDroid/out/target/product/dipper/*.zip
