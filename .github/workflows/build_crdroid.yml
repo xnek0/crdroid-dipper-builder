@@ -34,6 +34,7 @@ jobs:
           mkdir ~/crDroid
           cd ~/crDroid
           repo init -u https://github.com/crdroidandroid/android.git -b 12.0 --git-lfs --no-clone-bundle
+          mkdir -p .repo/local_manifests
           cp ${GITHUB_WORKSPACE}/.repo/local_manifests/dipper.xml .repo/local_manifests/
           repo sync --force-sync --no-tags --no-clone-bundle -j8
 
