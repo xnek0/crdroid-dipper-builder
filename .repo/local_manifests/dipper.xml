@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Твои форки с правками -->
+  <project path="device/xiaomi/dipper" name="xnek0/android_device_xiaomi_dipper" remote="github" revision="12.0" />
+  <project path="kernel/xiaomi/dipper" name="xnek0/android_kernel_xiaomi_dipper" remote="github" revision="12.0" />
+
+  <!-- Оригинальные репозитории (не меняем) -->
+  <project path="device/xiaomi/dipper-common" name="crdroidandroid/android_device_xiaomi_dipper-common" remote="github" revision="12.0" />
+  <project path="vendor/xiaomi/dipper" name="crdroidandroid/proprietary_vendor_xiaomi_dipper" remote="github" revision="12.0" />
+  <project path="vendor/xiaomi/dipper-common" name="crdroidandroid/proprietary_vendor_xiaomi_dipper-common" remote="github" revision="12.0" />
+  <project path="vendor/xiaomi/dipper" name="crdroidandroid/proprietary_vendor_xiaomi-dipper" remote="github" revision="12.0" />
+</manifest>
